@@ -1,2 +1,11 @@
 server:
   port: 8080
+
+billingEndpoint: http://billing/reoccurringPayment
+
+spring:
+   application:
+     name: ums
+security:
+  basic:
+    enabled: false
