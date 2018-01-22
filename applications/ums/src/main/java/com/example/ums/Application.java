@@ -1,9 +1,11 @@
 package com.example.ums;
 
 import com.example.billing.BillingClient;
+import com.example.billing.RabbitBillingClient;
 import com.example.subscriptions.SubscriptionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +37,9 @@ public class Application implements CommandLineRunner {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
@@ -55,11 +60,15 @@ public class Application implements CommandLineRunner {
         return new SubscriptionRepository(datasource);
     }
 
+//    @Bean
+//    @RefreshScope
+//    public BillingClient billingClient(@Value("${billingEndpoint}") String billingEndpoint) {
+//        return new BillingClient(billingEndpoint);
+//    }
+
     @Bean
     @RefreshScope
-    public BillingClient billingClient(@Value("${billingEndpoint}") String billingEndpoint) {
-        return new BillingClient(billingEndpoint);
+    public RabbitBillingClient billingClient(@Value("${billingEndpoint}") String billingEndpoint) {
+        return new RabbitBillingClient(billingEndpoint, rabbitTemplate);
     }
-
-
 }

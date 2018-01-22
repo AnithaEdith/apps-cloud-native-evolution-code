@@ -51,5 +51,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
 //	comple('spring-cloud-services-starter-service-registry')
 	compile(project(":components/payments"))
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile(project(":components/billing"))
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
