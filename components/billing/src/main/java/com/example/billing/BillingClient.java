@@ -24,7 +24,9 @@ public class BillingClient {
 
     @HystrixCommand(fallbackMethod = "defaultBilling")
     public void billUser(String userId, int paymentMonthlyAmount) {
+        logger.info("inside billUser");
         restTemplate.postForEntity(billingEndpoint, paymentMonthlyAmount, String.class);
+        logger.info("after billUser");
         logger.info("User Id:" + userId + "paymentAmount: " + paymentMonthlyAmount + "IS REAL");
     }
 
