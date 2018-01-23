@@ -48,7 +48,7 @@ public class Application implements CommandLineRunner {
 
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         logger.info("********Setting up database********");
         jdbcTemplate.execute("DROP TABLE subscriptions IF EXISTS");
         jdbcTemplate.execute("CREATE TABLE subscriptions(" +
@@ -68,7 +68,7 @@ public class Application implements CommandLineRunner {
 
     @Bean
     @RefreshScope
-    public RabbitBillingClient billingClient(@Value("${billingEndpoint}") String billingEndpoint) {
+    public RabbitBillingClient billingClient(@Value("${queueName}") String billingEndpoint) {
         return new RabbitBillingClient(billingEndpoint, rabbitTemplate);
     }
 }

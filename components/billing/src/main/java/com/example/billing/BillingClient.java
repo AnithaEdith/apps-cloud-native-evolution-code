@@ -1,5 +1,5 @@
 package com.example.billing;
 
 public interface BillingClient {
-    public void billUser(String userId, int paymentMonthlyAmount);
+    void billUser(String userId, int paymentMonthlyAmount);
 }

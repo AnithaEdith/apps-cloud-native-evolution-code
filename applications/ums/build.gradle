@@ -10,15 +10,17 @@ buildscript {
         maven {
             url 'http://repo.spring.io/milestone'
         }
-        maven { url "https://repo.spring.io/plugins-release" }
-        maven { url "https://repo.spring.io/libs-release" }
+     //   maven { url "https://repo.spring.io/plugins-release" }
+   //     maven { url "https://repo.spring.io/libs-release" }
 
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
-        classpath("io.pivotal.spring.cloud:spring-cloud-services-dependencies:${scsStartersVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE")
+        classpath("io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE")
+  //      classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  //      classpath("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+  //      classpath("io.pivotal.spring.cloud:spring-cloud-services-dependencies:${scsStartersVersion}")
+   //     classpath("io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE")
     }
 }
 
@@ -48,12 +50,14 @@ dependencies {
     compile(project(":components/subscriptions"))
     compile(project(":components/billing"))
     //compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.amqp:spring-rabbit")
     compile("io.pivotal.spring.cloud:spring-cloud-services-starter-config-client")
     compile("io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry")
     compile("io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker")
     compile('org.springframework.cloud:spring-cloud-starter-hystrix')
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
+//    compile("org.springframework.amqp:spring-rabbit:1.6.6.RELEASE")
 //    comple('spring-cloud-services-starter-service-registry')
     compile("com.h2database:h2")
 }

@@ -39,10 +39,10 @@ public class BillingApplication {
 		return new BillingMessageReceiver(paymentGateway);
 	}
 
-	@Bean
+	/*@Bean
 	MessageListenerAdapter listenerAdapter(BillingMessageReceiver receiver) {
 		return new MessageListenerAdapter(receiver, "process");
-	}
+	}*/
 
 
 	@Bean
